@@ -67,7 +67,7 @@ mvn clean package
 ```
 Build .jar file 
 
-# Cloud Watch Logging
+# Cloud Watch Logging Configuration
 
 * Create IAM role with following Policies attached to IAM Role
 * Finally Attach this IAM role to EC2
@@ -84,6 +84,46 @@ Build .jar file
 }
 
 ```
+
+# What is Cloud Watch 
+AWS CloudWatch is a monitoring and observability service provided by Amazon Web Services. It helps you collect, track, and analyze metrics, collect and monitor log files, and set alarms to respond automatically to changes in your AWS resources or applications.
+
+Key Features of AWS CloudWatch:
+* Metrics Monitoring:
+
+  * Collects data points (CPU usage, disk I/O, network traffic, etc.) from AWS services like EC2, RDS, Lambda, ECS, etc.
+  * You can create custom metrics for your applications.
+
+* Log Monitoring (CloudWatch Logs):
+
+    * Collect, view, and analyze logs from EC2 instances, Lambda functions, API Gateway, and more.
+    * Enables centralized logging for debugging and auditing.
+
+* Alarms:
+
+    * Set up alarms to trigger actions when metrics go beyond defined thresholds.
+    * Alarms can send notifications (via SNS), trigger Auto Scaling, or invoke Lambda functions.
+
+* Dashboards:
+
+    * Customizable visual dashboards to display metrics and logs for quick monitoring.
+
+🔹 1. Log Group
+A Log Group is like a folder or category that holds related logs together.
+
+* For example:
+
+    * /springboot/prod
+    * /application/staging
+    * /myapp/database-logs
+
+🔹 2. Log Stream
+A Log Stream is like a file inside a log group. It holds the actual sequence of log events from a specific source (e.g., a Docker container or EC2 instance).
+
+Each log stream belongs to one log group
+
+* Examples:
+  * springboot-app-container
 
 
 # Volumes
