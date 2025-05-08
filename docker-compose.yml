@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  todo-springboot:
+    build:
+      context: .
+    image: todo-app
+    ports:
+      - "8000:8080"
+    depends_on:
+      - mysql
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: /todo/prod
+        awslogs-region: ap-south-1
+        awslogs-stream: todoapp
+
+  mysql:
+    image: mysql
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
